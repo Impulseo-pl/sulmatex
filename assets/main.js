@@ -31,7 +31,7 @@
   /* tekst odsłaniany słowo po słowie */
   var rt=document.querySelector('.reveal-text'),words=[];
   if(rt){
-    var parts=rt.textContent.trim().split(/\s+/);
+    var parts=rt.textContent.trim().split(/[ \t\n\r]+/);
     rt.setAttribute('aria-label',rt.textContent.trim());
     rt.innerHTML=parts.map(function(w){return '<span class="w" aria-hidden="true">'+w+'</span>'}).join(' ');
     words=[].slice.call(rt.querySelectorAll('.w'));
@@ -110,7 +110,7 @@
   if(form){
     form.addEventListener('submit',function(e){
       e.preventDefault();
-      var f=form.elements,body='Imię: '+f.imie.value+'\nTelefon: '+f.telefon.value+'\n\n'+f.wiadomosc.value;
+      var f=form.elements,body='Imię: '+f.imie.value+'\nTelefon: '+f.telefon.value+'\nMiejscowość budowy: '+f.miejscowosc.value+'\n\n'+f.wiadomosc.value;
       location.href='mailto:sulmatex6@wp.pl?subject='+encodeURIComponent('Zapytanie ze strony')+'&body='+encodeURIComponent(body);
     });
   }
